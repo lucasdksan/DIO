@@ -48,3 +48,5 @@ class ContaBancaria {
 * Trabalhando com Componentes em React:
 
 Este curso focou mais nos conceitos de componentização no React, desde de propriedades até as chamadas.
+
+* Desenvolvimento avançado com JavaScript ES6:
