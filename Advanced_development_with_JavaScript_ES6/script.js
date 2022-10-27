@@ -84,3 +84,110 @@ const objT = {
 }
 
 /* Generators */
+
+function* hello() {
+    console.log("Lucas");
+    yield 2;
+    console.log("Silva");
+    yield 3;
+    console.log("Leoncio");
+}
+
+let it = hello();
+
+console.log(it.next());
+console.log(it.next());
+console.log(it.next());
+
+function* testInfinity(){
+    let number = 0;
+
+    while(true){
+        yield number;
+        number++;
+    }
+}
+
+const ats = testInfinity();
+
+console.log(ats.next());
+console.log(ats.next());
+console.log(ats.next());
+console.log(ats.next());
+
+const objh = {
+    values: [1,2,3,4],
+    *[Symbol.iterator]() {
+        for(var i = 0; i < this.values.length;i++){
+            yield this.values[i];
+        }
+    }
+};
+
+for(let value of objh){
+    console.log(value)
+}
+
+/* Callbacks */
+
+function doSomething(callback){
+    setTimeout(()=>{
+        callback("Lucas, deu certo!")
+    }, 1000);
+}
+
+const doOtherThing = (callback)=>{
+    setTimeout(()=>{
+        callback("Lucas Silva, é você?");
+    }, 1500);
+}
+
+(function(){
+    try {
+        doOtherThing(function(data){
+            var processedData = data.split("");
+
+            try {
+                doOtherThing(function(data2){
+                    var processedData2 = data.split("");
+        
+                    try {
+                        setTimeout(()=>{
+                            console.log(processedData, processedData2);
+                        });
+                    } catch(err) {
+                        console.log(err);
+                    }
+                });
+            } catch(err){
+                console.log(err);
+            }
+        });
+    } catch(err){
+        console.log(err);
+    }
+})();
+
+/* Promises  */ 
+
+// Pending
+// Fulfilled
+// Rejected
+
+const myPromise = new Promise((resolved, reject)=>{
+    // Modelo
+});
+
+const doSomethingPromise = new Promise((resolved, reject)=>{
+    setTimeout(()=>{
+        resolved("Lucas, deu certo!")
+    }, 1000);
+});
+
+const doOtherThingPromise = new Promise((resolved, reject)=>{
+    setTimeout(()=>{
+        resolved("Lucas Silva, é você?");
+    }, 1500);
+});
+
+doSomethingPromise.then(data => console.log(data));
