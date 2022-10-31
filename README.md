@@ -169,3 +169,60 @@ const obj = {
 ```
 
 -> Aplicando conceitos:
+
+* Rest: 
+
+Antes do ES6 para capturar varios argumentos em uma função era usado a propriedade ``` arguments ``` e usar metodos para pegar os valores, dessa forma deixando o codigo mais verboso. Depois do ES6 foi implementado o REST, permitir que uma função receba um número indefinido de parâmetros dentro de um array. 
+
+rest parameters são os únicos que não foram atribuidos a um nome separado, enquanto os arguments object contêm todos os argumentos passados para a função.
+
+o objeto arguments não é um array, enquanto rest parameters são instâncias Array, isso significa que métodos como sort, map, forEach ou pop podem ser aplicados diretamente.
+
+o objeto arguments possui a funcionalidade adicional de especificar ele mesmo (como a propriedade callee).
+
+exemplo: 
+
+```
+const sumV2 = (...args)=>{
+    return args.reduce((acc, value) => acc + value, 0);
+};
+```
+
+* Spread Operator:
+
+permite que um iterável, como um array ou string, seja expandido em locais onde zero ou mais argumentos (para chamadas de função) ou elementos (para literais de array) são esperados. Em um literal de objeto, a sintaxe de propagação enumera as propriedades de um objeto e adiciona os pares chave-valor ao objeto que está sendo criado.
+
+A sintaxe de propagação se parece exatamente com a sintaxe de descanso. De certa forma, a sintaxe de propagação é o oposto da sintaxe de descanso. A sintaxe de propagação "expande" uma matriz em seus elementos, enquanto a sintaxe de descanso coleta vários elementos e os "condensa" em um único elemento. Consulte os parâmetros de descanso e a propriedade de descanso.
+
+exemplo:
+
+```
+const str = "Minha mãe trabalha";
+const arr = [1,2,3,4,5,6,7,8,9];
+const arr2 = [...arr, 10,11,12,13,14,15,16,17,18,19];
+const obj = {
+    name: "Lucas da Silva",
+    idade: 24,
+    sexo: "M"
+}
+const obj2 = {
+    ...obj,
+    estado: "Rio Grande do Norte",
+    uf: "RN",
+    cidade: "Parnamirim"
+}
+
+function upper(){
+    console.log(arguments);
+}
+
+function printScreen(){
+    console.log()
+}
+
+upper(...str);
+```
+
+* Destructuring:
+
+É uma expressão JavaScript que possibilita descompactar valores de matrizes ou propriedades de objetos em variáveis ​​distintas.
